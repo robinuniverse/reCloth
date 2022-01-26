@@ -5,7 +5,7 @@
     A Revival of a Custom Minecraft Alpha 1.2.6 Server that attempts to modernize the classic Minecraft Experience
 </p>
 <p align="center">
-    <img width="1000" height="290" src="reCloth.png">
+    <img width="1000" height="290" src="recloth.png">
 </p>
 <p align="center">
     <b>gamerules • home • sleepvote • optimizations • death messages</b>
