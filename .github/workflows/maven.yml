@@ -35,3 +35,9 @@ jobs:
       with:
         name: Package
         path: staging
+
+    - name: Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: github-actions-artifact
+        path: staging
