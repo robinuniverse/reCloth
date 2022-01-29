@@ -19,6 +19,15 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
+                         <configuration>
+                             <classesDirectory>src</classesDirectory>
+                                  <archive>
+                                      <manifest>
+                                          <addClasspath>true</addClasspath>
+                                          <mainClass>net.minecraft.Main</mainClass>
+                                      </manifest>
+                                  </archive>
+                         </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
