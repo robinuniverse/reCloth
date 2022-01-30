@@ -84,7 +84,8 @@
                                  <configuration>
                                      <transformers>
                                          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                         <mainClass>net.minecraft.Main</mainClass>
+                                             <mainClass>net.minecraft.Main</mainClass>
+                                         </transformer>
                                      </transformers>
                                          <includes>
                                              <include>res/lib/**</include>
