@@ -45,51 +45,64 @@
                         </archive>
                     </configuration>
                 </plugin>
-                  <plugin>
-                      <artifactId>maven-assembly-plugin</artifactId>
-                      <groupId>org.apache.maven.plugins</groupId>
-                      <version>2.4.1</version>
-                      <executions>
-                          <execution>
-                              <id>make-executable-jar-with-dependencies</id>
-                              <phase>package</phase>
-                              <goals>
-                                  <goal>single</goal>
-                              </goals>
-                              <configuration>
-                                  <archive>
-                                      <manifest>
-                                          <addClasspath>true</addClasspath>
-                                          <mainClass>net.minecraft.Main</mainClass>
-                                      </manifest>
-                                  </archive>
-                                  <descriptorRefs>
-                                      <descriptorRef>jar-with-dependencies</descriptorRef>
-                                  </descriptorRefs>
-                              </configuration>
-                          </execution>
-                      </executions>
-                  </plugin>
-                              <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <excludes>
-                                    <exclude>junit:junit</exclude>
-                                </excludes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Main-Class>net.minecraft.Main</Main-Class>
+                            <Implementation-Title>reCloth</Implementation-Title>
+                            <Implementation-Vendor>Luminoso</Implementation-Vendor>
+                            <Specification-Title>reCloth</Specification-Title>
+                            <Specification-Version>${api.version}</Specification-Version>
+                            <Specification-Vendor>reCloth Devs</Specification-Vendor>
+                            <Sealed>true</Sealed>
+                        </manifestEntries>
+                        <manifestSections>
+                            <manifestSection>
+                                <name>net/recloth/</name>
+                                <manifestEntries>
+                                    <Sealed>true</Sealed>
+                                </manifestEntries>
+                            </manifestSection>
+                            <manifestSection>
+                                <name>com/recloth/</name>
+                                <manifestEntries>
+                                    <Sealed>true</Sealed>
+                                </manifestEntries>
+                            </manifestSection>
+                            <manifestSection>
+                                <name>org/recloth/</name>
+                                <manifestEntries>
+                                    <Sealed>true</Sealed>
+                                </manifestEntries>
+                            </manifestSection>
+                        </manifestSections>
+                    </archive>
+                </configuration>
             </plugin>
+                  <plugin>
+                         <groupId>org.apache.maven.plugins</groupId>
+                         <artifactId>maven-shade-plugin</artifactId>
+                         <version>3.2.4</version>
+                         <executions>
+                             <execution>
+                                 <phase>package</phase>
+                                 <goals>
+                                     <goal>shade</goal>
+                                 </goals>
+                                 <configuration>
+                                     <artifactSet>
+                                         <excludes>
+                                             <exclude>junit:junit</exclude>
+                                         </excludes>
+                                     </artifactSet>
+                                 </configuration>
+                             </execution>
+                         </executions>
+                     </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
