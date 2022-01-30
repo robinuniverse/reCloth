@@ -86,10 +86,10 @@
                                          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                          <mainClass>net.minecraft.Main</mainClass>
                                      </transformer>
-                                     <includes>
-                                         <include>res/lib/**</include>
-                                     </includes>
                                      <artifactSet>
+                                         <includes>
+                                             <include>res/lib/**</include>
+                                         </includes>
                                          <excludes>
                                              <exclude>junit:junit</exclude>
                                          </excludes>
