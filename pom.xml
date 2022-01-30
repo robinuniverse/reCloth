@@ -31,7 +31,7 @@
     </dependencies>
      <build>
         <pluginManagement>
-             </plugins>
+             <plugins>
                   <plugin>
                       <artifactId>maven-assembly-plugin</artifactId>
                       <groupId>org.apache.maven.plugins</groupId>
