@@ -1,13 +1,7 @@
 package net.minecraft;
 
 import net.minecraft.cloth.file.AdvancementCriterionLoader;
-import net.minecraft.cloth.plugins.ruleset.RulesetLoader;
-import net.minecraft.cloth.plugins.stich.StitchLoader;
 import net.minecraft.core.*;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.CoerceJavaToLua;
-import org.luaj.vm2.lib.jse.JsePlatform;
 
 import java.awt.*;
 import java.io.File;
@@ -37,46 +31,6 @@ public class Main {
         if (IS_PREVIEW) {
             logger.warning("*********Warning: This is a pre-release build of Cloth. Issues may arise. Targeting feature: " + TARGET_FEATURE);
         }
-        logger.info("[Stitch] Loading stitch plugins from /plugins...");
-        Globals _G = JsePlatform.standardGlobals();
-        //Main classes
-        LuaValue MinecraftServer = CoerceJavaToLua.coerce(minecraftServer);
-        LuaValue ConfigManager = CoerceJavaToLua.coerce(minecraftServer.configManager);
-        LuaValue WorldManager = CoerceJavaToLua.coerce(minecraftServer.overworld);
-        LuaValue PropertyManager = CoerceJavaToLua.coerce(minecraftServer.propertyManagerObj);
-        LuaValue GameruleManager = CoerceJavaToLua.coerce(net.minecraft.cloth.file.GameruleManager.getInstance());
-        //LuaValue Block = CoerceJavaToLua.coerce(new Block(0, Material.air));
-
-
-        //All of our lovely small classes we could ever possible need
-        LuaValue EntityCreeper = CoerceJavaToLua.coerce(new EntityCreeper(minecraftServer.overworld));
-        LuaValue EntitySpider = CoerceJavaToLua.coerce(new EntitySpider(minecraftServer.overworld));
-        LuaValue EntitySkeleton = CoerceJavaToLua.coerce(new EntitySkeleton(minecraftServer.overworld));
-        LuaValue EntityZombie = CoerceJavaToLua.coerce(new EntityZombie(minecraftServer.overworld));
-        //Main classes
-        _G.set("minecraft_server", MinecraftServer);
-        _G.set("world", WorldManager);
-        _G.set("config_manager", ConfigManager);
-        _G.set("property_manager", PropertyManager);
-        _G.set("gamerule_manager", GameruleManager);
-        //small classes
-        _G.set("entity_creeper", EntityCreeper);
-        _G.set("entity_spider", EntitySpider);
-        _G.set("entity_skeleton", EntitySkeleton);
-        _G.set("entity_zombie", EntityZombie);
-
-
-        StitchLoader stitch = new StitchLoader(_G);
-        stitch.RegisterAllPlugins();
-        logger.info("[Stitch] Calling initialization hook");
-        List<String> DummyList = new ArrayList<>();
-        stitch.CallHook("OnServerInit", DummyList);
-
-
-        RulesetLoader rulesetLoader = new RulesetLoader();
-        logger.info("[Rulesets] Registering all rulesets");
-        rulesetLoader.initializeRulesets();
-
 
         logger.info("[Cloth] Checking world seed");
         PropertyManager propertyManager = new PropertyManager(new File("server.properties"));
@@ -85,7 +39,6 @@ public class Main {
         logger.info("[Cloth] Cloth init complete. Deffering to MinecraftServer class ");
         try {
             // net.minecraft.server.MinecraftServer.main(args);
-            minecraftServer.stitch = stitch;
             minecraftServer.advancementCriterion = (HashMap<String, String>) AdvancementCriterionLoader.loadAdvancementCriterion();
             try {
                 if (!GraphicsEnvironment.isHeadless() && (args.length <= 0 || !args[0].equals("nogui"))) {
