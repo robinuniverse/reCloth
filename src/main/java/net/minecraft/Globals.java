@@ -2,8 +2,6 @@ package net.minecraft;
 
 //Cloth globals, in case they are needed outside of main. Better design
 
-import net.minecraft.cloth.command.Icommand;
-
 import java.util.HashMap;
 
 public class Globals {
@@ -12,20 +10,18 @@ public class Globals {
 
     //-------------------Release Information
     public static final boolean IS_PREVIEW = true; //I plan to release more early or test-specific releases now, so thisl be handy
-    public static final String VERSION_STRING = "Cloth Beta 1.1.0-dev";
-    public static final int STITCH_HOOK_VERSION = 1115;// Phase|Major|Minor|Incremental
-    public static final int RULESET_FILE_VERSION = 1115; // Phase|Major|Minor|Incremental
-    public static final String TARGET_FEATURE = "Anti-Cheat: Items/Inventory";
+    public static final String VERSION_STRING = "reCloth Beta 1.0";
+    public static final String TARGET_FEATURE = "Cleaning things up";
 
 
     //-------------------Easter-eggs/Tidbits
-    public static final String[] WELCOME_MSG = {"Its itchy!", "Get stitching!",
+    public static final String[] WELCOME_MSG = {"Its itchy!",
             "Supporting alpha!", "Its in beta!", "Also check out MineOnline!",
             "Bugs are features!", "Report issues on github!", "Unobfuscated!",
             "Free for all!", "Open source!", "Fork me!", "Experimental shenanigans!",
             "With contributions from many", "Compatible with JRE14! and JRE8!", "Why do these messages exist?",
-            "New flying pigmen!", "an uneasy alliance!", "buggy nether time!", "We use Trello!",
-            "Check out classic-rs", "rulesets!", "thanks for downloading!",
+            "New flying pigmen!", "an uneasy alliance!", "buggy nether time!",
+            "Check out classic-rs", "thanks for downloading!",
             "Now with anticheat!"};
 
     //-------------------Deaths
@@ -101,12 +97,5 @@ public class Globals {
 
 
     }};
-    //-------------------Commands
-    public static final HashMap commands = new HashMap<String, Icommand>() {{
-        // put("help", );
-    }};
-
-
-    //-------------------Stitch
 
 }

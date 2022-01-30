@@ -29,14 +29,14 @@ public class Main {
         Random random = new Random();
         logger.info("Welcome to " + VERSION_STRING + " - " + WELCOME_MSG[random.nextInt(WELCOME_MSG.length)]);
         if (IS_PREVIEW) {
-            logger.warning("*********Warning: This is a pre-release build of Cloth. Issues may arise. Targeting feature: " + TARGET_FEATURE);
+            logger.warning("This is a pre-release build of reCloth. Issues may arise. Targeting feature: " + TARGET_FEATURE);
         }
 
         logger.info("[Cloth] Checking world seed");
         PropertyManager propertyManager = new PropertyManager(new File("server.properties"));
         propertyManager.getLongProperty("seed", 1l);
 
-        logger.info("[Cloth] Cloth init complete. Deffering to MinecraftServer class ");
+        logger.info("[Cloth] Cloth init complete. Transferring control to MinecraftServer class ");
         try {
             // net.minecraft.server.MinecraftServer.main(args);
             minecraftServer.advancementCriterion = (HashMap<String, String>) AdvancementCriterionLoader.loadAdvancementCriterion();
