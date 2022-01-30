@@ -8,7 +8,6 @@ import net.minecraft.cloth.FallbackIdMaps;
 import net.minecraft.cloth.WorldGenParams;
 import net.minecraft.cloth.file.*;
 import net.minecraft.cloth.nether.Teleporter;
-import net.minecraft.cloth.plugins.stich.StitchLoader;
 import net.minecraft.core.*;
 
 import java.io.File;
@@ -48,7 +47,6 @@ public class MinecraftServer
     public PlayerDataManager playerDataManager = PlayerDataManager.getInstance();
     public GameruleManager gameruleManager = GameruleManager.getInstance();
     public BlockMappingsManager blockMaps = new BlockMappingsManager(new File("blocks.mappings"));
-    public StitchLoader stitch;
     public HashMap<String, String> advancementCriterion;
     int field_9014_h;
     FallbackIdMaps fallbackBlockMaps = new FallbackIdMaps();
@@ -506,7 +504,6 @@ public class MinecraftServer
         }
         overworld.tick();
         netherWorld.tick();
-        stitch.CallHook("OnServerTick", DummyList);
         while (overworld.func_6156_d()) ;
         overworld.func_459_b();
         field_6036_c.func_715_a();
@@ -638,19 +635,6 @@ public class MinecraftServer
                     EntityPlayer playerEntity = (EntityPlayerMP) player;
                     grantAdvancement(playerEntity.username, args[1]);
                 }
-            }
-
-            if (command.toLowerCase().startsWith("stitchcall")) {
-                String[] args = command.split(" ");
-                ArrayList<Object> hookArgs = new ArrayList<>();
-                int i;
-                for (i = 0; i < args.length; i++) {
-                    if (i >= 2) {
-                        hookArgs.add(args[i]);
-                    }
-                }
-
-                stitch.CallHook(args[1], hookArgs);
             }
             if (command.toLowerCase().startsWith("nether") && gameruleManager.getGamerule("nether", true)) {
 
