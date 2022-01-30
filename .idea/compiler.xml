@@ -4,5 +4,16 @@
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/net/minecraft/clothutils/plugins/hmod" includeSubdirectories="true" />
     </excludeFromCompile>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="minecraft_server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="minecraft_server" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
