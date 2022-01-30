@@ -53,7 +53,8 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>minecraft_server.net.minecraft.Main</mainClass>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>net.minecraft.Main</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
