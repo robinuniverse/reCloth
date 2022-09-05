@@ -20,3 +20,5 @@ on_success:
   - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {.\build_scripts\discord-webhook.ps1 success $env:DISCORD_WEBHOOK_URL}
 on_failure:
   - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {.\build_scripts\discord-webhook.ps1 failure $env:DISCORD_WEBHOOK_URL}
+deploy_script:
+  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {.\build_scripts\trigger-redeploy.ps1}
