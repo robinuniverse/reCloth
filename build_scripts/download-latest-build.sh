@@ -2,8 +2,8 @@
 AUTHTOKEN=""
 OUTPUT="cloth_server-0.1.0.jar"
 BRANCH="main"
-PROJECT="robinuniverse"
-REPO="recloth"
+PROJECT="Evshaddock"
+REPO="ReCloth"
 ARTIFACT="cloth_server-0.1.0.jar"
 
 # Parse arguments.
