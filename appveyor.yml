@@ -1,5 +1,6 @@
 version: '{build}'
 image: ubuntu
+stack: jdk 8
 
 cache:
   - /usr/share/maven
