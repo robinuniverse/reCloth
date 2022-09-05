@@ -13,6 +13,7 @@ build_script:
   - mvn clean package -DskipTests
 test_script:
   - mvn install verify
+test: off
 artifacts:
   - path: "**/target/*.?ar"
     name: "reCloth"
