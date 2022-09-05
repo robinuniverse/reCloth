@@ -10,8 +10,8 @@ public class Globals {
 
     //-------------------Release Information
     public static final boolean IS_PREVIEW = true; //I plan to release more early or test-specific releases now, so thisl be handy
-    public static final String VERSION_STRING = "reCloth Beta 1.0";
-    public static final String TARGET_FEATURE = "Cleaning things up";
+    public static final String VERSION_STRING = "reCloth Beta 1.1";
+    public static final String TARGET_FEATURE = "Setting up fully automated test environment...";
 
 
     //-------------------Easter-eggs/Tidbits
