@@ -26,36 +26,17 @@ class ThreadLoginVerifier extends Thread {
         try {
             String serverId = NetLoginHandler.getServerId(loginHandler);
             URL url = null;
-            if (propertyManager.getBooleanProperty("usemineonlinebackend", true)) {
-                HttpURLConnection connection;
-                Logger logger = Logger.getLogger("Minecraft");
-                logger.info("Getting URL: " + "https://sessionserver.mojang.com" + "/session/minecraft/hasJoined?username=" + loginPacket.username + "&serverId=" + serverId);
-                url = new URL("https://sessionserver.mojang.com" + "/session/minecraft/hasJoined?username=" + loginPacket.username + "&serverId=" + serverId);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setDoInput(true);
-                connection.setDoOutput(false);
+            url = new URL((new StringBuilder()).append("http://session.minecraft.net/game/checkserver.jsp?user=").append(loginPacket.username).append("&serverId=").append(serverId).toString());
 
-                connection.connect();
-                if (connection.getResponseCode() == 200) {
-                    NetLoginHandler.setLoginPacket(loginHandler, loginPacket);
-                } else {
-                    loginHandler.kickUser("Failed to verify username from sessionserver!");
-                }
+            BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(url.openStream()));
+            String s1 = bufferedreader.readLine();
+            bufferedreader.close();
+            System.out.println((new StringBuilder()).append("THE REPLY IS ").append(s1).toString());
+            if (s1.equals("YES")) {
+                NetLoginHandler.setLoginPacket(loginHandler, loginPacket);
             } else {
-                url = new URL((new StringBuilder()).append("http://www.minecraft.net/game/checkserver.jsp?user=").append(loginPacket.username).append("&serverId=").append(serverId).toString());
-
-                BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(url.openStream()));
-                String s1 = bufferedreader.readLine();
-                bufferedreader.close();
-                System.out.println((new StringBuilder()).append("THE REPLY IS ").append(s1).toString());
-                if (s1.equals("YES")) {
-                    NetLoginHandler.setLoginPacket(loginHandler, loginPacket);
-                } else {
-                    loginHandler.kickUser("Failed to verify username!");
-                }
+                loginHandler.kickUser("Failed to verify username!");
             }
-
         } catch (Exception exception) {
             exception.printStackTrace();
         }
