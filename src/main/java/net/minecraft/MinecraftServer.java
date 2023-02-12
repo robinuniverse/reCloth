@@ -250,7 +250,7 @@ public class MinecraftServer
                     for (int i = 0; i < configManager.playerEntities.size(); i++) {
                         //Important
                         EntityPlayer player = (EntityPlayer) configManager.playerEntities.get(i);
-                        InventoryPlayer inventory = player.inventory;
+                        //InventoryPlayer inventory = player.inventory;
 
 
                         //--------Advancement
