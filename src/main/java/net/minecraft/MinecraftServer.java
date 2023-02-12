@@ -250,17 +250,17 @@ public class MinecraftServer
                     for (int i = 0; i < configManager.playerEntities.size(); i++) {
                         //Important
                         EntityPlayer player = (EntityPlayer) configManager.playerEntities.get(i);
-                        //InventoryPlayer inventory = player.inventory;
+                        InventoryPlayer inventory = player.inventory;
 
 
                         //--------Advancement
                         if (gameruleManager.getGamerule("enableadvancements", false)) {
-                            // System.out.println("Looping advancement inv checks");
+                            System.out.println("Looping advancement inv checks");
 
                             //inventory
                             for (int slot = 0; slot < inventory.getInventorySize(); slot++) {
                                 ItemStack item = inventory.getStackInSlot(slot);
-                                // System.out.println(slot);
+                                System.out.println(slot);
                                 if (item != null) {
 
                                     //Advancements check
