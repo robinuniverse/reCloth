@@ -27,9 +27,9 @@ public class Packet21PickupSpawn extends Packet {
         xPosition = MathHelper.floor_double(entityitem.posX * 32D);
         yPosition = MathHelper.floor_double(entityitem.posY * 32D);
         zPosition = MathHelper.floor_double(entityitem.posZ * 32D);
-        rotation = (byte) (int) (entityitem.motionX * 128D);
-        pitch = (byte) (int) (entityitem.motionY * 128D);
-        roll = (byte) (int) (entityitem.motionZ * 128D);
+        rotation = (byte) (int) (128D);
+        pitch = (byte) (int) (128D);
+        roll = (byte) (int) (128D);
     }
 
     public void readPacketData(DataInputStream datainputstream) throws IOException {

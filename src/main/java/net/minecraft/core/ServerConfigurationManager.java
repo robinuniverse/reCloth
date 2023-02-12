@@ -72,7 +72,6 @@ public class ServerConfigurationManager {
         mcServer.overworld.entityJoinedWorld(entityplayermp);
         playerManagerObj.func_9214_a(entityplayermp);
 
-/*      
         //Check their invenotry for illageal items.
         String itemIDBlacklist = gameruleManager.getGamerule("itemidblacklist", " ");
         boolean IsInvClean = true;
@@ -99,9 +98,7 @@ public class ServerConfigurationManager {
             } else {
                 System.out.println("Slot " + i + " contained null or nonextistant item");
             }
-        } 
-*/
-
+        }
         //MOTD
         File tempFile = new File("motd.txt");
         boolean exists = tempFile.exists();
